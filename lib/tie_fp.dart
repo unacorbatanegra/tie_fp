@@ -1,3 +1,3 @@
 library tie_fp;
 
-export 'src/result.dart';
+part 'src/result.dart';

@@ -1,3 +1,5 @@
+part of tie_fp;
+
 sealed class Result<T> {
   const Result();
 

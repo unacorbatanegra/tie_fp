@@ -1,3 +1,5 @@
+[![Pub Package](https://img.shields.io/pub/v/tie_fp.svg)](https://pub.dev/packages/tie_fp)
+
 # Tie FP
 
 A simple package that provides a class `Result` along with its subclasses `Success` and `Failure`. This package is designed to handle success and failure scenarios in a concise and type-safe manner.
