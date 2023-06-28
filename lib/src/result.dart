@@ -8,6 +8,7 @@ sealed class Result<T> {
   bool isError();
 
   Object? getRawError();
+  StackTrace? stackTrace();
 }
 
 final class Success<T> extends Result<T> {
@@ -25,17 +26,23 @@ final class Success<T> extends Result<T> {
 
   @override
   Object? getRawError() => null;
+
+  @override
+  StackTrace? stackTrace() => null;
 }
 
 final class Failure<T> extends Result<T> {
   final Object? error;
 
   Failure(
-    this.error,
-  );
+    this.error, [
+    this._stackTrace,
+  ]);
 
   @override
-  String getError() => error.toString();
+  String getError() {
+    return error.toString();
+  }
 
   @override
   T? getValue() => null;
@@ -45,4 +52,9 @@ final class Failure<T> extends Result<T> {
 
   @override
   Object? getRawError() => error;
+
+  final StackTrace? _stackTrace;
+
+  @override
+  StackTrace? stackTrace() => _stackTrace;
 }
