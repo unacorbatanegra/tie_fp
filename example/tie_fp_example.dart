@@ -9,6 +9,8 @@ void main() async {
     int value = result.getValue()!;
     print('Operation successful! Result: $value');
   }
+
+  // final v = test().toResult();
 }
 
 Future<Result<int>> performOperation() async {
@@ -29,5 +31,7 @@ Result tryCatchExample<T>() {
     return Failure(e);
   }
 }
+
+List<int> test() => List.generate(1, (index) => index);
 
 Object performOperationThatMayThrowException() => throw UnimplementedError();

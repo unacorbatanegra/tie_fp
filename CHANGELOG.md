@@ -1,3 +1,8 @@
+## 0.0.4
+
+- Add `onError` callback to unified all error messages.
+- Add `T Function()` extension.
+
 ## 0.0.3
 
 - Add `toResult()` extension on `Future<T>`
