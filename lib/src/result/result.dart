@@ -1,6 +1,5 @@
 part of tie_fp;
 
-
 /// [Result] is the base class of the `tie_fp` package
 /// it is designed to safely return a value when no error happens
 /// and the corresponding error if any exceptions is thrown.
