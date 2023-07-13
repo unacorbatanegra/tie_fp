@@ -28,13 +28,10 @@ void main() {
       'Value Error get error is exception',
       () => expect(valueError.getError(), isException),
     );
+
     test(
       'Value Error value is null',
-      () => expect(valueError.getValue(), null),
-    );
-    test(
-      'Value Error value is null',
-      () => expect(valueError.getValue(), null),
+      () => expect(() => valueError.getValue(), throwsA(isA<Failure>())),
     );
   });
 }
