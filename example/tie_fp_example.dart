@@ -13,24 +13,10 @@ void main() async {
   // final v = test().toResult();
 }
 
-Future<Result<int>> performOperation() async {
-  // Perform some operation that may succeed or fail
-  try {
-    var value = await Future.value(42);
-    return Success(value);
-  } catch (e) {
-    return Failure(e);
-  }
-}
+Future<Result<int>> performOperation() => Future.value(42).toResult();
 
-Result tryCatchExample<T>() {
-  try {
-    var result = performOperationThatMayThrowException();
-    return Success(result);
-  } catch (e) {
-    return Failure(e);
-  }
-}
+Result tryCatchExample<T>() =>
+    Result.wrapFunction(() => performOperationThatMayThrowException());
 
 List<int> test() => List.generate(1, (index) => index);
 
