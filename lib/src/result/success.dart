@@ -5,7 +5,9 @@ final class Success<T> extends Result<T> {
   Success(this.data);
 
   @override
-  String getError() => '';
+  Object getError() {
+    throw Failure('success class cannot contains an error.');
+  }
 
   @override
   T getValue() => data;
@@ -14,8 +16,5 @@ final class Success<T> extends Result<T> {
   bool isError() => false;
 
   @override
-  Object? getRawError() => null;
-
-  @override
-  StackTrace? stackTrace() => null;
+  StackTrace? stackTrace() => StackTrace.current;
 }

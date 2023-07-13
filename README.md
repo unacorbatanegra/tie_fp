@@ -4,44 +4,79 @@
 
 A simple package that provides a class `Result` along with its subclasses `Success` and `Failure`. This package is designed to handle success and failure scenarios in a concise and type-safe manner.
 
-## Usage
+This package is inspired but not based in:
 
-Here's an example of how you can use the `Result` package:
+- [Result - Rust](https://doc.rust-lang.org/std/result/)
+- [Error - Go](https://go.dev/blog/error-handling-and-go)
+- [Abseil Status - C++](https://abseil.io/docs/cpp/guides/status)
+
+## Fundamentals
+
+All `Functions` and `Futures` are error-prone making it difficult to make sure if anything went wrong without writing a lot of boilerplate with the try-catch escenarios.
+
+The `Result` class tries to avoid these by using extensions and wrapping everything giving you only a `isError()` method to make sure the result of the computation, and avoiding the rethrow step.
+
+If you need to perform operations that potentially throw an error you can do this:
 
 ```dart
-import 'package:tie_fp/tie_fp.dart';
 
-void main() {
-  Result<int> result = performOperation();
+Result<void> myFunction(){
 
-  if (result.isError()) {
-    print('An error occurred: ${result.getError()}');
-  } else {
-    int value = result.getValue()!;
-    print('Operation successful! Result: $value');
+  try {
+    operation1();
+    operation2();
+    return Success(null);
+  } catch(Error error, StackTrace stackTrace){
+    return Failure(error,stackTrace);
   }
 }
 
-Result<int> performOperation() {
-  // Perform some operation that may succeed or fail
-  if (operationSucceeded) {
-    return Success(42);
-  } else {
-    return Failure('An error occurred');
-  }
-}
+void main(){
 
-T tryCatchExample<T>(){
-    try{
-        var result=performOperationThatMayThrowException();
-        return Success(result);
-    }catch (e){
-        return Failure(e);
-    }
+  final result= myFunction();
+  if(result.isError()){
+    /// perform something
+    return;
+  }
+
 }
 ```
 
-By using the methods provided by the `Result` class, you can easily handle success and failure cases without resorting to exceptions or error codes. This promotes a more expressive and safer coding style.
+If you want to wrap a `Function` you can do this:
+
+```dart
+int operation() => 1;
+
+void main(){
+  Result<int> result = Result.wrapFunction(operation());
+}
+```
+
+which is the equivalent of
+
+```dart
+try{
+  final v=operation();
+  return Success(v);
+} catch(Error error, StackTrace stackTrace){
+  return Failure(error,stackTrace);
+}
+
+```
+
+In the case of a `Future` the `toResult()` method is useful:
+
+```dart
+@override
+Future<Result<Ride>> detailed(int id) => supabase
+    .from(table)
+    .select("*, user:profiles(*), vehicle(*) ")
+    .eq('id', id)
+    .limit(1)
+    .single()
+    .then((value) => Ride.fromMap(value))
+    .toResult();
+```
 
 ## Conclusion
 

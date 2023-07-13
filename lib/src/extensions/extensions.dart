@@ -13,15 +13,8 @@ extension ResultFuture<T> on Future<T> {
   Future<Result<T>> toResult() => _execute(this);
 }
 
-extension ToResultFunction<T> on T Function<T>() {
-  Result<T> _fromFuncton(T Function() func) {
-    try {
-      final b = func();
-      return Success(b);
-    } catch (e) {
-      return Failure(e);
-    }
-  }
+extension ResultT<T> on T {
+  Result<T> toSuccess() => Success(this);
 
-  Result<T> toResult() => _fromFuncton(this());
+  Result<T> toFailure() => Failure(this);
 }

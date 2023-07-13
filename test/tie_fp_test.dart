@@ -26,7 +26,7 @@ void main() {
     );
     test(
       'Value Error get error is exception',
-      () => expect(valueError.getRawError(), isException),
+      () => expect(valueError.getError(), isException),
     );
     test(
       'Value Error value is null',

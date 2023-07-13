@@ -6,7 +6,7 @@ void main() async {
   if (result.isError()) {
     print('An error occurred: ${result.getError()}');
   } else {
-    int value = result.getValue()!;
+    int value = result.getValue();
     print('Operation successful! Result: $value');
   }
 
