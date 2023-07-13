@@ -14,14 +14,14 @@ void main() {
       expect(r, isA<Result>());
       expect(r.isError(), true);
       expect(r.getError(), isException);
-      expect(r.getValue(), isNull);
+      expect(() => r.getValue(), throwsA(isA<Failure>()));
     });
     test('Function return value', () {
       // final a = Result.t;
       final r = Result.wrapFunction(() => value(1));
       expect(r, TypeMatcher<Result<int>>());
       expect(r.isError(), false);
-      expect(r.getError(), isNull);
+      expect(() => r.getError(), throwsA(isA<Failure>()));
       expect(r.getValue(), 1);
     });
     test('Future return value', () async {
@@ -29,7 +29,7 @@ void main() {
       final r = await futureValue().toResult();
       expect(r, TypeMatcher<Result<int>>());
       expect(r.isError(), false);
-      expect(r.getError(), isNull);
+      expect(() => r.getError(), throwsA(isA<Failure>()));
       expect(r.getValue(), 1);
     });
     test('Future throws error', () async {
@@ -38,7 +38,8 @@ void main() {
       expect(r, isA<Result>());
       expect(r.isError(), true);
       expect(r.getError(), isException);
-      // expect(r.getValue(), isNull);
+
+      expect(() => r.getValue(), throwsA(isA<Failure>()));
     });
 
     // test('Function pass extension return error', () async {
