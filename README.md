@@ -26,8 +26,8 @@ Result<void> myFunction(){
     operation1();
     operation2();
     return Success(null);
-  } catch(Error error, StackTrace stackTrace){
-    return Failure(error,stackTrace);
+  } catch(Exception exception, StackTrace stackTrace){
+    return Failure(exception,stackTrace);
   }
 }
 
@@ -58,8 +58,8 @@ which is the equivalent of
 try{
   final v=operation();
   return Success(v);
-} catch(Error error, StackTrace stackTrace){
-  return Failure(error,stackTrace);
+} catch(Exception exception, StackTrace stackTrace){
+  return Failure(exception,stackTrace);
 }
 
 ```
