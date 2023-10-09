@@ -1,9 +1,6 @@
 ## 0.0.6
 
-- Add documentation.
-- Remove nullable from `getValue`.
-- Add `Result.wrapFunction()` factory.
-- Remove `T Function()` extension.
+- Change `StackTrace` obtaining.
 
 ## 0.0.5
 
