@@ -1,10 +1,12 @@
 import 'package:tie_fp/tie_fp.dart';
 
+import 'utils.dart';
+
 void main() async {
   Result<int> result = await performOperation();
 
   if (result.isError()) {
-    print('An error occurred: ${result.getError()}');
+    print('An error occurred: ${result.getError()} ${result.stackTrace()}');
   } else {
     int value = result.getValue();
     print('Operation successful! Result: $value');
@@ -12,8 +14,6 @@ void main() async {
 
   // final v = test().toResult();
 }
-
-Future<Result<int>> performOperation() => Future.value(42).toResult();
 
 Result tryCatchExample<T>() =>
     Result.wrapFunction(() => performOperationThatMayThrowException());

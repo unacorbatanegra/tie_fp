@@ -1,3 +1,10 @@
+## 0.0.6
+
+- Add documentation.
+- Remove nullable from `getValue`.
+- Add `Result.wrapFunction()` factory.
+- Remove `T Function()` extension.
+
 ## 0.0.5
 
 - Add documentation.

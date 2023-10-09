@@ -11,6 +11,8 @@ final class Failure<T> extends Result<T> {
     this.error, [
     this._stackTrace,
   ]) {
+    _stackTrace ??= StackTrace.current;
+    // print('_stackTrace: ${_stackTrace.runtimeType} $_stackTrace');
     ResultError.onError?.call(this);
   }
 
@@ -23,7 +25,7 @@ final class Failure<T> extends Result<T> {
   @override
   bool isError() => true;
 
-  final StackTrace? _stackTrace;
+  StackTrace? _stackTrace;
 
   @override
   StackTrace? stackTrace() => _stackTrace;

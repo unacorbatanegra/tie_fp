@@ -12,7 +12,7 @@ This package is inspired but not based in:
 
 ## Fundamentals
 
-All `Functions` and `Futures` are error-prone making it difficult to make sure if anything went wrong without writing a lot of boilerplate with the try-catch escenarios.
+All `Functions` and `Futures` are error-prone making it difficult to make sure if anything went wrong without writing a lot of boilerplate with the try-catch scenarios.
 
 The `Result` class tries to avoid these by using extensions and wrapping everything giving you only a `isError()` method to make sure the result of the computation, and avoiding the rethrow step.
 

@@ -41,6 +41,15 @@ void main() {
 
       expect(() => r.getValue(), throwsA(isA<Failure>()));
     });
+    test('Future throws error', () async {
+      final r = await futureError().toResult();
+      // print(r.stackTrace());
+      expect(r, isA<Result>());
+      // expect(isA<StackTrace>(), r.stackTrace());
+      expect(r.getError(), isException);
+
+      expect(() => r.getValue(), throwsA(isA<Failure>()));
+    });
 
     // test('Function pass extension return error', () async {
     //   final r = valueError().toResult();
