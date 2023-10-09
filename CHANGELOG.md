@@ -1,3 +1,7 @@
+## 0.0.7
+
+- Remove `StackTrace` from future.
+
 ## 0.0.6
 
 - Change `StackTrace` obtaining.

@@ -5,8 +5,8 @@ extension ResultFuture<T> on Future<T> {
     try {
       final r = await com;
       return Success(r);
-    } catch (e, s) {
-      return Failure(e, s);
+    } catch (e) {
+      return Failure(e);
     }
   }
 
