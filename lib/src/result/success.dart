@@ -2,6 +2,7 @@ part of tie_fp;
 
 final class Success<T> extends Result<T> {
   final T data;
+
   Success(this.data);
 
   @override
@@ -17,4 +18,7 @@ final class Success<T> extends Result<T> {
 
   @override
   StackTrace? stackTrace() => StackTrace.current;
+
+  @override
+  String toString() => data.toString();
 }

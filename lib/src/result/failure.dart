@@ -5,14 +5,13 @@ part of tie_fp;
 /// and get the [StackStrace] if applies.
 
 final class Failure<T> extends Result<T> {
-  final Object? error;
+  final Object error;
+  final StackTrace _stackTrace;
 
   Failure(
     this.error, [
-    this._stackTrace,
-  ]) {
-    _stackTrace ??= StackTrace.current;
-    // print('_stackTrace: ${_stackTrace.runtimeType} $_stackTrace');
+    StackTrace? stackTrace,
+  ]) : _stackTrace = stackTrace ?? StackTrace.current {
     ResultError.onError?.call(this);
   }
 
@@ -25,13 +24,11 @@ final class Failure<T> extends Result<T> {
   @override
   bool isError() => true;
 
-  StackTrace? _stackTrace;
-
-  @override
-  StackTrace? stackTrace() => _stackTrace;
-
   @override
   T getValue() {
     throw Failure('failure data cannot return a value');
   }
+
+  @override
+  StackTrace? stackTrace() => _stackTrace;
 }

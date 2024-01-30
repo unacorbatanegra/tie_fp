@@ -1,3 +1,8 @@
+## 0.0.8
+
+- Change `StackTrace` behaviour.
+- Add `toString()` to `Success`
+
 ## 0.0.7
 
 - Remove `StackTrace` from future.

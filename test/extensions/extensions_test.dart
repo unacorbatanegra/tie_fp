@@ -43,27 +43,10 @@ void main() {
     });
     test('Future throws error', () async {
       final r = await futureError().toResult();
-      // print(r.stackTrace());
-      expect(r, isA<Result>());
-      // expect(isA<StackTrace>(), r.stackTrace());
-      expect(r.getError(), isException);
 
+      expect(r, isA<Result>());
+      expect(r.getError(), isException);
       expect(() => r.getValue(), throwsA(isA<Failure>()));
     });
-
-    // test('Function pass extension return error', () async {
-    //   final r = valueError().toResult();
-    //   expect(r, isA<Result>());
-    //   expect(r.isError(), true);
-    //   expect(r.getRawError(), isException);
-    //   expect(r.getValue(), isNull);
-    // });
-    // test('Function pass extension return value', () async {
-    //   final r = value(1).toResult();
-    //   expect(r, TypeMatcher<Result<int>>());
-    //   expect(r.isError(), false);
-    //   expect(r.getRawError(), isNull);
-    //   expect(r.getValue(), 1);
-    // });
   });
 }
