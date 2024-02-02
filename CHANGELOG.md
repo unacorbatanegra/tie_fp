@@ -1,3 +1,7 @@
+## 0.0.9
+
+- Fix `Error` need to be nullable
+
 ## 0.0.8
 
 - Change `StackTrace` behaviour.

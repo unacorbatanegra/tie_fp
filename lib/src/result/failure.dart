@@ -5,7 +5,7 @@ part of tie_fp;
 /// and get the [StackStrace] if applies.
 
 final class Failure<T> extends Result<T> {
-  final Object error;
+  final Object? error;
   final StackTrace _stackTrace;
 
   Failure(
