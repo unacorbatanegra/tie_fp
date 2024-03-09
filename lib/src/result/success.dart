@@ -20,5 +20,5 @@ final class Success<T> extends Result<T> {
   StackTrace? stackTrace() => StackTrace.current;
 
   @override
-  String toString() => data.toString();
+  String toString() => 'Success: $data';
 }

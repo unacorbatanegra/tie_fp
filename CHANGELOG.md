@@ -1,3 +1,8 @@
+## 1.0.0
+
+- Add optional repor error parameter
+- Change `toString()` override to make it clear the original result
+
 ## 0.0.9
 
 - Fix `Error` need to be nullable

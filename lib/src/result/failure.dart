@@ -11,15 +11,16 @@ final class Failure<T> extends Result<T> {
   Failure(
     this.error, [
     StackTrace? stackTrace,
+    bool report = true,
   ]) : _stackTrace = stackTrace ?? StackTrace.current {
-    ResultError.onError?.call(this);
+    if (report) ResultError.onError?.call(this);
   }
 
   @override
   Object? getError() => error;
 
   @override
-  String toString() => error.toString();
+  String toString() => 'Failure: $error';
 
   @override
   bool isError() => true;
