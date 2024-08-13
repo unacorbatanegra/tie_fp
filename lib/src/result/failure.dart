@@ -9,10 +9,10 @@ final class Failure<T> extends Result<T> {
   final StackTrace _stackTrace;
 
   Failure(
-    this.error, [
+    this.error, {
     StackTrace? stackTrace,
     bool report = true,
-  ]) : _stackTrace = stackTrace ?? StackTrace.current {
+  }) : _stackTrace = stackTrace ?? StackTrace.current {
     if (report) ResultError.onError?.call(this);
   }
 

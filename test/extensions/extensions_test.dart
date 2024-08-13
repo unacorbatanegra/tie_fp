@@ -34,6 +34,7 @@ void main() {
     });
     test('Future throws error', () async {
       final r = await futureError().toResult();
+   
 
       expect(r, isA<Result>());
       expect(r.isError(), true);

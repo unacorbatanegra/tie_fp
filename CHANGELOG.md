@@ -1,3 +1,8 @@
+## 1.0.1
+
+- Breaking change: Change structure of constructor to make properties named
+- Add 
+
 ## 1.0.0
 
 - Add optional repor error parameter
