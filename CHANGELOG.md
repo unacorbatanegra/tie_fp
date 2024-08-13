@@ -1,7 +1,7 @@
 ## 1.0.1
 
 - Breaking change: Change structure of constructor to make properties named
-- Add 
+- Add optional `report` parameter to `toResult()` extension
 
 ## 1.0.0
 
